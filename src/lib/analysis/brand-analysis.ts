@@ -35,21 +35,21 @@ export function runBrandAnalysis(
   const recommendations: string[] = [];
 
   if (healthLevel === 'critical') {
-    risks.push(`Brand traffic is ${dependencyScore.toFixed(0)}% of total clicks — high dependency risk`);
-    recommendations.push('Invest heavily in non-brand content and SEO to diversify traffic sources');
+    risks.push(`Ruch brandowy to ${dependencyScore.toFixed(0)}% wszystkich kliknięć — wysokie ryzyko zależności`);
+    recommendations.push('Zainwestuj w treści niebrandowe i SEO, aby zdywersyfikować źródła ruchu');
   } else if (healthLevel === 'warning') {
-    risks.push(`Brand traffic at ${dependencyScore.toFixed(0)}% — approaching unhealthy dependency`);
-    recommendations.push('Start building non-brand content pipeline to reduce brand dependency');
+    risks.push(`Ruch brandowy na poziomie ${dependencyScore.toFixed(0)}% — zbliża się do niezdrowej zależności`);
+    recommendations.push('Zacznij budować pipeline treści niebrandowych, aby zmniejszyć zależność od marki');
   }
 
   if (nonBrandSummary.avgCtr < 0.02) {
-    risks.push('Non-brand CTR is below 2% — titles and meta descriptions may need optimization');
-    recommendations.push('Audit title tags and meta descriptions for top non-brand queries');
+    risks.push('CTR niebrandowy jest poniżej 2% — tytuły i opisy meta mogą wymagać optymalizacji');
+    recommendations.push('Przejrzyj tagi title i meta description dla top niebrandowych zapytań');
   }
 
   if (nonBrandSummary.avgPosition > 10) {
-    risks.push('Average non-brand position is outside page 1');
-    recommendations.push('Focus on content quality and backlinks for core non-brand keywords');
+    risks.push('Średnia pozycja niebrandowa jest poza stroną 1');
+    recommendations.push('Skup się na jakości treści i linkach zwrotnych dla kluczowych fraz niebrandowych');
   }
 
   return {

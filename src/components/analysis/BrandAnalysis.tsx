@@ -19,7 +19,7 @@ export function BrandAnalysis() {
     return runBrandAnalysis(rawData.queries, brandTerms);
   }, [rawData, brandTerms]);
 
-  if (!result) return <p className="text-[var(--text-muted)]">No data available</p>;
+  if (!result) return <p className="text-[var(--text-muted)]">Brak dostępnych danych</p>;
 
   const { composition, dependencyScore, healthLevel, topBrandKeywords, topNonBrandKeywords, risks, recommendations } = result;
   const healthColor = healthLevel === 'healthy' ? 'success' : healthLevel === 'warning' ? 'warning' : 'danger';
@@ -27,48 +27,48 @@ export function BrandAnalysis() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold mb-1">Brand vs Non-Brand</h1>
-        <p className="text-[var(--text-secondary)]">Understand your traffic composition and brand dependency</p>
+        <h1 className="text-2xl font-bold mb-1">Brandowe vs Niebrandowe</h1>
+        <p className="text-[var(--text-secondary)]">Analiza struktury ruchu i zależności od marki</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <MetricCard label="Brand Clicks" value={formatNumber(composition.brand.clicks)} />
-        <MetricCard label="Non-Brand Clicks" value={formatNumber(composition.nonBrand.clicks)} />
+        <MetricCard label="Kliknięcia brandowe" value={formatNumber(composition.brand.clicks)} />
+        <MetricCard label="Kliknięcia niebrandowe" value={formatNumber(composition.nonBrand.clicks)} />
         <MetricCard
-          label="Brand Dependency"
+          label="Zależność od marki"
           value={`${dependencyScore.toFixed(0)}%`}
           color={healthColor}
-          subtext={healthLevel}
+          subtext={healthLevel === 'healthy' ? 'zdrowy' : healthLevel === 'warning' ? 'ostrzeżenie' : 'krytyczny'}
         />
-        <MetricCard label="Brand CTR" value={formatPercent(composition.brand.avgCtr)} />
+        <MetricCard label="CTR brandowy" value={formatPercent(composition.brand.avgCtr)} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
-          <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">Traffic Composition</h3>
+          <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">Struktura ruchu</h3>
           <DonutChart
             data={[
-              { name: 'Brand', value: composition.brand.clicks, color: '#6366f1' },
-              { name: 'Non-Brand', value: composition.nonBrand.clicks, color: '#22c55e' },
+              { name: 'Brandowe', value: composition.brand.clicks, color: '#6366f1' },
+              { name: 'Niebrandowe', value: composition.nonBrand.clicks, color: '#22c55e' },
             ]}
             centerLabel={`${dependencyScore.toFixed(0)}%`}
           />
         </Card>
 
         <Card>
-          <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">Health Assessment</h3>
+          <h3 className="text-sm font-medium text-[var(--text-secondary)] mb-4">Ocena kondycji</h3>
           <div className="space-y-6">
-            <ProgressBar value={dependencyScore} label="Brand Dependency" color={healthColor} />
+            <ProgressBar value={dependencyScore} label="Zależność od marki" color={healthColor} />
             <div className="space-y-4 text-sm">
               <div>
-                <p className="text-[var(--text-secondary)] mb-1">Composition</p>
+                <p className="text-[var(--text-secondary)] mb-1">Struktura</p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="rounded-lg bg-[var(--surface-elevated)] p-3">
-                    <span className="text-[var(--text-muted)]">Brand Queries:</span>{' '}
+                    <span className="text-[var(--text-muted)]">Zapytania brandowe:</span>{' '}
                     <span className="text-[var(--foreground)]">{composition.brand.queryCount}</span>
                   </div>
                   <div className="rounded-lg bg-[var(--surface-elevated)] p-3">
-                    <span className="text-[var(--text-muted)]">Non-Brand Queries:</span>{' '}
+                    <span className="text-[var(--text-muted)]">Zapytania niebrandowe:</span>{' '}
                     <span className="text-[var(--foreground)]">{composition.nonBrand.queryCount}</span>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ export function BrandAnalysis() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {risks.length > 0 && (
             <Card>
-              <h3 className="text-sm font-medium text-[var(--danger)] mb-3">Risks</h3>
+              <h3 className="text-sm font-medium text-[var(--danger)] mb-3">Ryzyka</h3>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                 {risks.map((r, i) => <li key={i}>{r}</li>)}
               </ul>
@@ -90,7 +90,7 @@ export function BrandAnalysis() {
           )}
           {recommendations.length > 0 && (
             <Card>
-              <h3 className="text-sm font-medium text-[var(--success)] mb-3">Recommendations</h3>
+              <h3 className="text-sm font-medium text-[var(--success)] mb-3">Rekomendacje</h3>
               <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
                 {recommendations.map((r, i) => <li key={i}>{r}</li>)}
               </ul>
@@ -101,17 +101,17 @@ export function BrandAnalysis() {
 
       <Card>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-medium text-[var(--text-secondary)]">Top Non-Brand Keywords</h3>
-          <ExportButton data={topNonBrandKeywords} filename="non-brand-keywords.csv" />
+          <h3 className="text-sm font-medium text-[var(--text-secondary)]">Najlepsze niebrandowe słowa kluczowe</h3>
+          <ExportButton data={topNonBrandKeywords} filename="niebrandowe-slowa.csv" />
         </div>
         <DataTable
           data={topNonBrandKeywords}
           columns={[
-            { key: 'query', label: 'Query' },
-            { key: 'clicks', label: 'Clicks', align: 'right', render: r => formatNumber(r.clicks) },
-            { key: 'impressions', label: 'Impressions', align: 'right', render: r => formatNumber(r.impressions) },
+            { key: 'query', label: 'Zapytanie' },
+            { key: 'clicks', label: 'Kliknięcia', align: 'right', render: r => formatNumber(r.clicks) },
+            { key: 'impressions', label: 'Wyświetlenia', align: 'right', render: r => formatNumber(r.impressions) },
             { key: 'ctr', label: 'CTR', align: 'right', render: r => formatPercent(r.ctr) },
-            { key: 'position', label: 'Position', align: 'right', render: r => r.position.toFixed(1) },
+            { key: 'position', label: 'Pozycja', align: 'right', render: r => r.position.toFixed(1) },
           ]}
         />
       </Card>

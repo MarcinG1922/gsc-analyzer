@@ -8,11 +8,11 @@ import { SetupWizard } from '@/components/setup/SetupWizard';
 import { formatNumber, formatPercent } from '@/lib/utils/format';
 
 const NAV_ITEMS = [
-  { href: '/analyze/brand', label: 'Brand Analysis', icon: 'B' },
-  { href: '/analyze/seo', label: 'SEO Opportunities', icon: 'S' },
-  { href: '/analyze/content', label: 'Content Strategy', icon: 'C' },
-  { href: '/analyze/paid', label: 'Paid Search', icon: 'P' },
-  { href: '/analyze/summary', label: 'Strategic Summary', icon: 'R' },
+  { href: '/analyze/brand', label: 'Analiza marki', icon: 'B' },
+  { href: '/analyze/seo', label: 'Szanse SEO', icon: 'S' },
+  { href: '/analyze/content', label: 'Strategia treści', icon: 'C' },
+  { href: '/analyze/paid', label: 'Płatne wyszukiwanie', icon: 'P' },
+  { href: '/analyze/summary', label: 'Podsumowanie', icon: 'R' },
 ];
 
 export default function AnalyzeLayout({ children }: { children: React.ReactNode }) {
@@ -49,15 +49,15 @@ export default function AnalyzeLayout({ children }: { children: React.ReactNode 
         <div className="p-3 border-b border-[var(--border-color)]">
           <div className="rounded-lg bg-[var(--surface-elevated)] p-3 text-xs space-y-1">
             <div className="flex justify-between text-[var(--text-secondary)]">
-              <span>Queries</span>
+              <span>Zapytania</span>
               <span className="text-[var(--foreground)]">{formatNumber(rawData.summary.totalQueries)}</span>
             </div>
             <div className="flex justify-between text-[var(--text-secondary)]">
-              <span>Clicks</span>
+              <span>Kliknięcia</span>
               <span className="text-[var(--foreground)]">{formatNumber(rawData.summary.totalClicks)}</span>
             </div>
             <div className="flex justify-between text-[var(--text-secondary)]">
-              <span>Avg CTR</span>
+              <span>Śr. CTR</span>
               <span className="text-[var(--foreground)]">{formatPercent(rawData.summary.avgCtr)}</span>
             </div>
           </div>

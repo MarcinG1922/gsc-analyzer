@@ -9,7 +9,7 @@ export function findNonRankingHighIntent(queries: GscQueryRow[]): PaidSearchOppo
       ...q,
       campaignType: 'non_ranking' as const,
       intentLevel: classifyIntent(q.query),
-      bidStrategy: 'Aggressive bid — no organic presence',
+      bidStrategy: 'Agresywna stawka — brak widoczności organicznej',
     }))
     .sort((a, b) => b.impressions - a.impressions);
 }
@@ -21,20 +21,20 @@ export function findSerpDomination(queries: GscQueryRow[]): PaidSearchOpportunit
       ...q,
       campaignType: 'serp_domination' as const,
       intentLevel: classifyIntent(q.query),
-      bidStrategy: 'Medium bid — complement organic ranking',
+      bidStrategy: 'Średnia stawka — uzupełnienie pozycji organicznej',
     }))
     .sort((a, b) => b.impressions - a.impressions);
 }
 
 export function findCompetitorConquesting(queries: GscQueryRow[]): PaidSearchOpportunity[] {
-  const competitorSignals = ['alternative', 'vs', 'versus', 'compared', 'competitor', 'switch from', 'migrate from'];
+  const competitorSignals = ['alternative', 'vs', 'versus', 'compared', 'competitor', 'switch from', 'migrate from', 'alternatywa', 'porównanie', 'zamiennik', 'konkurencja'];
   return queries
     .filter(q => competitorSignals.some(s => q.query.toLowerCase().includes(s)))
     .map(q => ({
       ...q,
       campaignType: 'competitor_conquesting' as const,
       intentLevel: classifyIntent(q.query),
-      bidStrategy: 'Strategic bid — capture competitor traffic',
+      bidStrategy: 'Strategiczna stawka — przechwycenie ruchu konkurencji',
     }))
     .sort((a, b) => b.impressions - a.impressions);
 }

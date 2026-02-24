@@ -30,31 +30,31 @@ export function runStrategicSummary(
   }
 
   const headlineMetrics = [
-    { label: 'Total Clicks', value: formatNumber(s.totalClicks) },
-    { label: 'Total Impressions', value: formatNumber(s.totalImpressions) },
-    { label: 'Avg CTR', value: formatPercent(s.avgCtr) },
-    { label: 'Avg Position', value: s.avgPosition.toFixed(1) },
-    { label: 'Total Queries', value: formatNumber(s.totalQueries) },
-    { label: 'Quick Wins', value: String(quickWins.length) },
+    { label: 'Łączne kliknięcia', value: formatNumber(s.totalClicks) },
+    { label: 'Łączne wyświetlenia', value: formatNumber(s.totalImpressions) },
+    { label: 'Śr. CTR', value: formatPercent(s.avgCtr) },
+    { label: 'Śr. pozycja', value: s.avgPosition.toFixed(1) },
+    { label: 'Łączne zapytania', value: formatNumber(s.totalQueries) },
+    { label: 'Szybkie wygrane', value: String(quickWins.length) },
   ];
 
   const risks: string[] = [];
-  if (s.avgPosition > 15) risks.push('Average position is outside page 2 — major visibility gap');
-  if (s.avgCtr < 0.02) risks.push('Average CTR below 2% — titles and meta descriptions need improvement');
-  if (quickWins.length === 0 && striking.length === 0) risks.push('No quick-win opportunities found — may need new content');
+  if (s.avgPosition > 15) risks.push('Średnia pozycja poza stroną 2 — duża luka widoczności');
+  if (s.avgCtr < 0.02) risks.push('Średni CTR poniżej 2% — tytuły i meta opisy wymagają poprawy');
+  if (quickWins.length === 0 && striking.length === 0) risks.push('Brak szans na szybkie wygrane — potrzebne nowe treści');
 
   const opportunities = [
-    { label: `${quickWins.length} quick-win keywords (pos 4-10)`, revenueEstimate: revenueEst.annualRevenue * 0.6 },
-    { label: `${striking.length} striking-distance keywords (pos 11-20)`, revenueEstimate: revenueEst.annualRevenue * 0.4 },
-    { label: `Total potential revenue: ${formatCurrency(revenueEst.annualRevenue)}/yr` },
+    { label: `${quickWins.length} szybkich wygranych (poz. 4-10)`, revenueEstimate: revenueEst.annualRevenue * 0.6 },
+    { label: `${striking.length} fraz w zasięgu (poz. 11-20)`, revenueEstimate: revenueEst.annualRevenue * 0.4 },
+    { label: `Potencjalny przychód: ${formatCurrency(revenueEst.annualRevenue)}/rok` },
   ];
 
   const priorities = [
-    'Optimize title tags and meta descriptions for top CTR gap keywords',
-    'Create dedicated content for striking-distance topic clusters',
-    'Audit and fix keyword cannibalization issues',
-    'Build backlinks to pages ranking 4-10 for quick-win keywords',
-    'Monitor anomalies and investigate traffic drops',
+    'Zoptymalizuj tagi title i meta description dla fraz z lukami CTR',
+    'Stwórz dedykowane treści dla klastrów tematycznych w zasięgu',
+    'Przeprowadź audyt i napraw problemy z kanibalizacją słów kluczowych',
+    'Buduj linki zwrotne do stron na pozycjach 4-10 dla szybkich wygranych',
+    'Monitoruj anomalie i badaj spadki ruchu',
   ];
 
   return {

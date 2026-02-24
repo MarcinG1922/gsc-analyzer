@@ -65,7 +65,7 @@ export function DataTable<T extends Record<string, any>>({
     <div>
       <input
         type="text"
-        placeholder="Filter..."
+        placeholder="Filtruj..."
         value={filter}
         onChange={e => { setFilter(e.target.value); setPage(0); }}
         className="mb-4 w-full max-w-xs rounded-lg border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-2 text-sm text-[var(--foreground)] placeholder:text-[var(--text-muted)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
@@ -107,7 +107,7 @@ export function DataTable<T extends Record<string, any>>({
             {paged.length === 0 && (
               <tr>
                 <td colSpan={columns.length} className="px-4 py-8 text-center text-[var(--text-muted)]">
-                  No data found
+                  Brak danych
                 </td>
               </tr>
             )}
@@ -116,14 +116,14 @@ export function DataTable<T extends Record<string, any>>({
       </div>
       {totalPages > 1 && (
         <div className="flex items-center justify-between mt-4 text-sm text-[var(--text-secondary)]">
-          <span>{sorted.length} results</span>
+          <span>{sorted.length} wyników</span>
           <div className="flex gap-2">
             <button
               onClick={() => setPage(p => Math.max(0, p - 1))}
               disabled={page === 0}
               className="px-3 py-1 rounded border border-[var(--border-color)] disabled:opacity-30 hover:bg-[var(--surface-elevated)]"
             >
-              Prev
+              Wstecz
             </button>
             <span className="px-3 py-1">
               {page + 1} / {totalPages}
@@ -133,7 +133,7 @@ export function DataTable<T extends Record<string, any>>({
               disabled={page >= totalPages - 1}
               className="px-3 py-1 rounded border border-[var(--border-color)] disabled:opacity-30 hover:bg-[var(--surface-elevated)]"
             >
-              Next
+              Dalej
             </button>
           </div>
         </div>

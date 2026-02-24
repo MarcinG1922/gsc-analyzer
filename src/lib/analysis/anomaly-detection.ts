@@ -11,7 +11,7 @@ export function detectAnomalies(queries: GscQueryRow[]): Anomaly[] {
         type: 'ctr_anomaly',
         severity: 'warning',
         query: q.query,
-        detail: `${q.impressions.toLocaleString()} impressions but only ${(q.ctr * 100).toFixed(2)}% CTR`,
+        detail: `${q.impressions.toLocaleString('pl-PL')} wyświetleń, ale tylko ${(q.ctr * 100).toFixed(2)}% CTR`,
       });
     }
 
@@ -21,7 +21,7 @@ export function detectAnomalies(queries: GscQueryRow[]): Anomaly[] {
         type: 'low_ctr_top_position',
         severity: 'high',
         query: q.query,
-        detail: `Position ${q.position.toFixed(1)} but CTR only ${(q.ctr * 100).toFixed(1)}% — title/meta likely needs work`,
+        detail: `Pozycja ${q.position.toFixed(1)}, ale CTR tylko ${(q.ctr * 100).toFixed(1)}% — tytuł/meta prawdopodobnie wymaga poprawy`,
       });
     }
   }

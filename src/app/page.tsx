@@ -21,10 +21,10 @@ export default function Home() {
         <div className="max-w-2xl w-full space-y-8 -mt-20">
           <div className="text-center space-y-3">
             <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-[var(--foreground)] to-[var(--text-secondary)] bg-clip-text text-transparent">
-              Analyze Your Search Performance
+              Analizuj wyniki wyszukiwania
             </h1>
             <p className="text-[var(--text-secondary)] text-lg max-w-lg mx-auto">
-              Upload your Google Search Console export and get strategic insights with revenue impact estimates.
+              Wgraj eksport z Google Search Console i uzyskaj strategiczne wnioski z szacunkami wpływu na przychody.
             </p>
           </div>
 
@@ -32,16 +32,16 @@ export default function Home() {
 
           <div className="grid grid-cols-3 gap-4 text-center text-sm">
             <div className="rounded-xl border border-[var(--border-color)] bg-[var(--surface)] p-4">
-              <p className="text-[var(--accent)] font-medium mb-1">Brand Analysis</p>
-              <p className="text-[var(--text-muted)]">Brand vs non-brand health</p>
+              <p className="text-[var(--accent)] font-medium mb-1">Analiza marki</p>
+              <p className="text-[var(--text-muted)]">Brandowe vs niebrandowe</p>
             </div>
             <div className="rounded-xl border border-[var(--border-color)] bg-[var(--surface)] p-4">
-              <p className="text-[var(--accent)] font-medium mb-1">SEO Opportunities</p>
-              <p className="text-[var(--text-muted)]">Quick wins & striking distance</p>
+              <p className="text-[var(--accent)] font-medium mb-1">Szanse SEO</p>
+              <p className="text-[var(--text-muted)]">Szybkie wygrane i dystans</p>
             </div>
             <div className="rounded-xl border border-[var(--border-color)] bg-[var(--surface)] p-4">
-              <p className="text-[var(--accent)] font-medium mb-1">Revenue Impact</p>
-              <p className="text-[var(--text-muted)]">Size every opportunity in $</p>
+              <p className="text-[var(--accent)] font-medium mb-1">Wpływ na przychody</p>
+              <p className="text-[var(--text-muted)]">Wycena każdej szansy w PLN</p>
             </div>
           </div>
         </div>

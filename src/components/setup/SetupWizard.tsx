@@ -13,12 +13,12 @@ export function SetupWizard({ onComplete }: { onComplete: () => void }) {
         <div className="flex gap-4 mb-8">
           <div className={`flex items-center gap-2 text-sm ${step === 'brand' ? 'text-[var(--accent)]' : 'text-[var(--text-muted)]'}`}>
             <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step === 'brand' ? 'bg-[var(--accent)] text-white' : 'bg-[var(--surface-elevated)]'}`}>1</span>
-            Brand Terms
+            Frazy brandowe
           </div>
           <div className="flex-1 border-t border-[var(--border-color)] self-center" />
           <div className={`flex items-center gap-2 text-sm ${step === 'context' ? 'text-[var(--accent)]' : 'text-[var(--text-muted)]'}`}>
             <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${step === 'context' ? 'bg-[var(--accent)] text-white' : 'bg-[var(--surface-elevated)]'}`}>2</span>
-            Business Context
+            Kontekst biznesowy
           </div>
         </div>
 

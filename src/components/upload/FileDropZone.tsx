@@ -27,11 +27,11 @@ export function FileDropZone() {
       } else if (csvFiles.length > 0) {
         data = await parseGscCsvFiles(csvFiles);
       } else {
-        throw new Error('Please upload a ZIP file or CSV files from Google Search Console');
+        throw new Error('Wgraj plik ZIP lub pliki CSV z Google Search Console');
       }
 
       if (data.queries.length === 0) {
-        throw new Error('No query data found in the uploaded files. Make sure the CSV contains query/keyword data.');
+        throw new Error('Nie znaleziono danych zapytań w przesłanych plikach. Upewnij się, że CSV zawiera dane zapytań.');
       }
 
       dispatch({ type: 'SET_RAW_DATA', payload: data });
@@ -41,7 +41,7 @@ export function FileDropZone() {
 
       router.push('/analyze');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to parse files');
+      setError(err instanceof Error ? err.message : 'Nie udało się przetworzyć plików');
     } finally {
       setLoading(false);
     }
@@ -83,7 +83,7 @@ export function FileDropZone() {
       {loading ? (
         <div className="space-y-3">
           <div className="mx-auto w-8 h-8 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin" />
-          <p className="text-[var(--text-secondary)]">Parsing GSC data...</p>
+          <p className="text-[var(--text-secondary)]">Przetwarzanie danych GSC...</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -94,10 +94,10 @@ export function FileDropZone() {
           </div>
           <div>
             <p className="text-lg font-medium text-[var(--foreground)]">
-              Drop your GSC export here
+              Upuść eksport z GSC tutaj
             </p>
             <p className="text-sm text-[var(--text-secondary)] mt-1">
-              ZIP file or CSV files from Google Search Console
+              Plik ZIP lub pliki CSV z Google Search Console
             </p>
           </div>
         </div>

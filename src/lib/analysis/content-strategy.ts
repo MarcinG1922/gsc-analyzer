@@ -3,8 +3,16 @@ import type { ContentOpportunity, ContentAnalysisResult } from '@/types/analysis
 import { classifyFunnelStage } from './funnel-classification';
 import { classifyIntent } from '@/lib/constants/intent-signals';
 
-const QUESTION_PREFIXES = ['how', 'what', 'why', 'when', 'where', 'which', 'can', 'does', 'is'];
-const COMPARISON_SIGNALS = ['vs', 'versus', 'alternative', 'compared to', 'best', 'top', 'review'];
+const QUESTION_PREFIXES = [
+  'how', 'what', 'why', 'when', 'where', 'which', 'can', 'does', 'is',
+  // Polish
+  'jak', 'co', 'dlaczego', 'kiedy', 'gdzie', 'który', 'która', 'które', 'czy', 'ile',
+];
+const COMPARISON_SIGNALS = [
+  'vs', 'versus', 'alternative', 'compared to', 'best', 'top', 'review',
+  // Polish
+  'porównanie', 'alternatywa', 'najlepszy', 'najlepsza', 'najlepsze', 'ranking', 'opinie',
+];
 
 function scoreOpportunity(queries: GscQueryRow[]): number {
   const totalImp = queries.reduce((s, q) => s + q.impressions, 0);

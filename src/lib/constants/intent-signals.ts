@@ -2,16 +2,25 @@ export const HIGH_INTENT_SIGNALS = [
   'buy', 'purchase', 'order', 'pricing', 'cost', 'quote',
   'demo', 'trial', 'free trial', 'near me', 'same day',
   'plans', 'subscribe',
+  // Polish
+  'kup', 'kupić', 'zamów', 'zamówienie', 'cennik', 'cena', 'ile kosztuje',
+  'wycena', 'oferta', 'sklep', 'dostawa', 'koszt',
 ];
 
 export const MEDIUM_INTENT_SIGNALS = [
   'best', 'vs', 'versus', 'alternative', 'compared',
   'pros and cons', 'benefits', 'features', 'review', 'reviews',
+  // Polish
+  'najlepszy', 'najlepsza', 'najlepsze', 'porównanie', 'alternatywa',
+  'opinia', 'opinie', 'recenzja', 'ranking', 'wady i zalety', 'zamiennik',
 ];
 
 export const LOW_INTENT_SIGNALS = [
   'what is', 'how to', 'guide', 'tutorial', 'learn',
   'examples', 'templates', 'definition',
+  // Polish
+  'co to', 'jak', 'poradnik', 'instrukcja', 'definicja',
+  'przykłady', 'szablony', 'co oznacza',
 ];
 
 export function classifyIntent(query: string): 'high' | 'medium' | 'low' {

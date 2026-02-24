@@ -4,12 +4,12 @@ import { GscProvider } from '@/store/gsc-store';
 
 export const metadata: Metadata = {
   title: 'GSC Analyzer',
-  description: 'Strategic Google Search Console data analysis',
+  description: 'Strategiczna analiza danych z Google Search Console',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body className="antialiased">
         <GscProvider>{children}</GscProvider>
       </body>

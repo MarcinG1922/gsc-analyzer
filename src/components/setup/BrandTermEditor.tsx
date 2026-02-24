@@ -48,15 +48,15 @@ export function BrandTermEditor({ onComplete }: { onComplete: () => void }) {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-semibold text-[var(--foreground)] mb-1">Brand Terms</h3>
+        <h3 className="text-lg font-semibold text-[var(--foreground)] mb-1">Frazy brandowe</h3>
         <p className="text-sm text-[var(--text-secondary)]">
-          We detected these as likely brand terms. Confirm or adjust.
+          Wykryliśmy te frazy jako prawdopodobnie brandowe. Potwierdź lub dostosuj.
         </p>
       </div>
 
       {brandDetection?.likelyBrand && brandDetection.likelyBrand.length > 0 && (
         <div>
-          <p className="text-sm font-medium text-[var(--success)] mb-2">Likely Brand</p>
+          <p className="text-sm font-medium text-[var(--success)] mb-2">Prawdopodobnie brandowe</p>
           <div className="flex flex-wrap gap-2">
             {brandDetection.likelyBrand.map(term => (
               <button
@@ -77,7 +77,7 @@ export function BrandTermEditor({ onComplete }: { onComplete: () => void }) {
 
       {brandDetection?.uncertain && brandDetection.uncertain.length > 0 && (
         <div>
-          <p className="text-sm font-medium text-[var(--warning)] mb-2">Uncertain</p>
+          <p className="text-sm font-medium text-[var(--warning)] mb-2">Niepewne</p>
           <div className="flex flex-wrap gap-2">
             {brandDetection.uncertain.slice(0, 20).map(term => (
               <button
@@ -102,14 +102,14 @@ export function BrandTermEditor({ onComplete }: { onComplete: () => void }) {
           value={customTerm}
           onChange={e => setCustomTerm(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && addCustom()}
-          placeholder="Add custom brand term..."
+          placeholder="Dodaj własną frazę brandową..."
           className="flex-1 rounded-lg border border-[var(--border-color)] bg-[var(--surface-elevated)] px-3 py-2 text-sm text-[var(--foreground)] placeholder:text-[var(--text-muted)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]"
         />
         <button
           onClick={addCustom}
           className="px-4 py-2 rounded-lg border border-[var(--border-color)] text-sm text-[var(--text-secondary)] hover:text-[var(--foreground)] hover:border-[var(--accent)]"
         >
-          Add
+          Dodaj
         </button>
       </div>
 
@@ -118,13 +118,13 @@ export function BrandTermEditor({ onComplete }: { onComplete: () => void }) {
           onClick={handleConfirm}
           className="px-6 py-2.5 rounded-lg bg-[var(--accent)] text-white text-sm font-medium hover:bg-[var(--accent-hover)] transition-colors"
         >
-          Confirm Brand Terms ({confirmed.size})
+          Zatwierdź frazy brandowe ({confirmed.size})
         </button>
         <button
           onClick={handleSkip}
           className="px-6 py-2.5 rounded-lg border border-[var(--border-color)] text-sm text-[var(--text-secondary)] hover:text-[var(--foreground)] transition-colors"
         >
-          Skip
+          Pomiń
         </button>
       </div>
     </div>
